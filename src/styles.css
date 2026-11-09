@@ -1,0 +1,263 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * Keep every @import in this top block. Remote fonts load via <link> in src/routes/__root.tsx.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * DIIT design system — flat, editorial, Oxbridge-inspired.
+ * Brand: DIIT navy (logo blue), DIIT green (secondary accent), red rule from the logo.
+ * No gradients-as-decoration, no glows. Overlays on photos are the only gradients.
+ */
+
+@theme inline {
+  --font-sans: "Plus Jakarta Sans", "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --font-bangla: "Hind Siliguri", "Plus Jakarta Sans", sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 14px);
+  --radius-4xl: calc(var(--radius) + 22px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-brand-green: var(--brand-green);
+  --color-brand-red: var(--brand-red);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-on-image: var(--on-image);
+  --color-on-image-muted: var(--on-image-muted);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-lift: var(--shadow-lift);
+  --shadow-nav: var(--shadow-nav);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Neutrals */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.035 265);
+  --ink: oklch(0.21 0.035 265);
+  --surface: oklch(0.975 0.003 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.035 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.035 265);
+
+  /* DIIT navy — sampled from the logo, slightly lifted for screen */
+  --primary: oklch(0.42 0.16 268);
+  --primary-hover: oklch(0.36 0.15 268);
+  --primary-soft: oklch(0.955 0.02 268);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --brand-green: oklch(0.58 0.15 152);
+  --brand-red: oklch(0.58 0.22 27);
+
+  --secondary: oklch(0.975 0.003 260);
+  --secondary-foreground: oklch(0.21 0.035 265);
+  --muted: oklch(0.965 0.004 260);
+  --muted-foreground: oklch(0.52 0.02 262);
+  --accent: oklch(0.955 0.02 268);
+  --accent-foreground: oklch(0.42 0.16 268);
+
+  --on-image: oklch(0.99 0 0);
+  --on-image-muted: oklch(0.99 0 0 / 0.78);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.925 0.006 260);
+  --border-strong: oklch(0.86 0.01 260);
+  --input: oklch(0.925 0.006 260);
+  --ring: oklch(0.42 0.16 268 / 0.5);
+
+  --shadow-card: 0 1px 2px oklch(0.21 0.035 265 / 0.04), 0 4px 16px -6px oklch(0.21 0.035 265 / 0.06);
+  --shadow-lift: 0 2px 4px oklch(0.21 0.035 265 / 0.04), 0 18px 40px -16px oklch(0.21 0.035 265 / 0.18);
+  --shadow-nav: 0 1px 0 oklch(0.21 0.035 265 / 0.06), 0 8px 24px -12px oklch(0.21 0.035 265 / 0.12);
+
+  --overlay-hero: linear-gradient(180deg, oklch(0.15 0.03 265 / 0.05) 20%, oklch(0.15 0.03 265 / 0.72) 100%);
+  --overlay-left: linear-gradient(90deg, oklch(0.15 0.03 265 / 0.78) 0%, oklch(0.15 0.03 265 / 0.25) 70%);
+
+  --chart-1: oklch(0.42 0.16 268);
+  --chart-2: oklch(0.58 0.15 152);
+  --chart-3: oklch(0.58 0.22 27);
+  --chart-4: oklch(0.7 0.1 268);
+  --chart-5: oklch(0.8 0.08 152);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.21 0.035 265);
+  --sidebar-primary: oklch(0.42 0.16 268);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.955 0.02 268);
+  --sidebar-accent-foreground: oklch(0.42 0.16 268);
+  --sidebar-border: oklch(0.925 0.006 260);
+  --sidebar-ring: oklch(0.42 0.16 268 / 0.5);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  html[lang="bn"] body {
+    font-family: var(--font-bangla);
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility overlay-hero {
+  background-image: var(--overlay-hero);
+}
+
+@utility overlay-left {
+  background-image: var(--overlay-left);
+}
+
+@utility text-display {
+  font-size: clamp(2.5rem, 5.6vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+@utility text-section {
+  font-size: clamp(1.875rem, 3.4vw, 2.875rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse var(--marquee-duration, 40s) linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility mask-fade-x {
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-track-reverse {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
